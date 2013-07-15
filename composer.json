@@ -16,12 +16,12 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
-    },
-    "require-dev": {
+        "php": ">=5.3.3",
         "symfony/framework-bundle": "2.3.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "knplabs/knp-paginator-bundle": "dev-master"
+    },
+    "require-dev": {
     },
     "autoload": {
         "psr-0": { "Twinpeaks\\UserBundle": "" }
