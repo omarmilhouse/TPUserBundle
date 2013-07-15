@@ -81,6 +81,7 @@ class User extends BaseUser {
     public function setCreatedValue()
     {
         $this->created = new \DateTime();
+        $this->updated = new \DateTime();
     }    
     
     /**
