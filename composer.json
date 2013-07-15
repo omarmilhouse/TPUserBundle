@@ -1,0 +1,32 @@
+{
+    "name": "twinpeaks/user-bundle",
+    "type": "symfony-bundle",
+    "description": "FOSUserBundle extension with admin for use with Symfony2",
+    "keywords": ["fos_user", "bundle", "user_admin"],
+    "homepage": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Omar Milini",
+            "email": "omar.milini@gmail.com"
+        },
+        {
+            "name": "Mosè Raguzzini",
+            "email": "mose.raguzzini@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": "2.3.*",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "gedmo/doctrine-extensions": "dev-master",
+        "jms/security-extra-bundle": "dev-master"        
+    },
+    "autoload": {
+        "psr-0": { "Twinpeaks\\UserBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Twinpeaks/UserBundle"
+}

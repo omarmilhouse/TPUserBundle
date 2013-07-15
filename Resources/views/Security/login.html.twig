@@ -1,0 +1,38 @@
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error|trans }}</div>
+    {% endif %}
+    <a class="close-reveal-modal" style="font-size:30px; font-weight:bold; position:absolute;right:10px;top:0px">&#215;</a>
+    <h2>Login</h2>
+    <p class="lead">Inserisci username e pasword per autenticarti</p>
+    <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <div class="row">
+            <div class="small-3 columns">
+                <label for="username" class="left inline">{{ 'security.login.username'|trans|upper }}</label>
+            </div>
+            <div class="small-9 columns">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Inserisci username"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-3 columns">
+                <label for="password" class="left inline">{{ 'security.login.password'|trans|upper }}</label>
+            </div>
+            <div class="small-9 columns">
+                <input type="password" id="password" name="_password" required="required"  placeholder="Inserisci password"/>
+            </div>
+        </div>
+        <div class="row">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="left inline rememberme"/>
+            <label for="remember_me" class="rememberme">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+        <div class="row">
+            <input  type="submit" id="_submit" class="button round large expand"  value="{{ 'security.login.submit'|trans|upper }}"></input>
+        </div>
+    </form>
+{% endblock fos_user_content %}

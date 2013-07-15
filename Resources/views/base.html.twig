@@ -1,0 +1,57 @@
+{% set currentRoute = app.request.attributes.get('_route') %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Segreteria{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
+    {% stylesheets 'bundles/Twinpeaksuser/bootstrap/css/bootstrap.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>        
+    {% endblock %}    
+  </head>
+  <body>
+    {% block nav %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Segreteria</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="{{ currentRoute == 'user' ? 'active' : '' }}"><a href="{{ path('user') }}">Utente</a></li>
+              {% if is_granted('ROLE_SUPER_ADMIN') %}<li class="{{ currentRoute == 'usergroup' ? 'active' : '' }}"><a href="{{ path('usergroup') }}">Gruppi</a></li>{% endif %}
+              <li><a href="{{ path('homepage') }}">Sezione docenti/allievi</a></li>
+            </ul>
+              <a class="btn btn-small btn-inverse" style="float:right" href="{{ path('fos_user_security_logout') }}"><i class="icon-white icon-off"></i> Log out</a>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>          
+    {% endblock %}
+          
+    <div class="container">
+    {% block body %}
+    {% endblock %}
+    </div>     
+          
+    {% block javascript %}
+    {% javascripts
+        '@TwinpeaksUserBundle/Resources/public/bootstrap/js/bootstrap.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}          
+    {% endblock %}
+  </body>
+</html>

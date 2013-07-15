@@ -1,0 +1,59 @@
+{% extends 'TwinpeaksUserBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>Scheda utente</h1>
+
+    <table class="record_properties table table-striped">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+
+            <tr>
+                <th>Abilitato</th>
+                <td>{{ entity.enabled }}</td>
+            </tr>
+            <tr>
+                <th>Ultimo accesso</th>
+                <td>{{ entity.lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Congnome</th>
+                <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Creato</th>
+                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Aggiornato</th>
+                <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Groups</th>
+                <td>
+                    {% for group in entity.groups %}
+                    {{ group.name }}
+                    {% endfor%}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+        <a  class="btn btn-primary" href="{{ path('user') }}">
+            <i class="icon-list icon-white"></i> Ritorna alla lista utenti
+        </a>
+    
+{% endblock %}

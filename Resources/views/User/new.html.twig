@@ -1,0 +1,19 @@
+{% extends 'TwinpeaksUserBundle::base.html.twig' %}
+
+{% block body -%}
+    <div class="well">
+    <h1>Creazione utente</h1>
+
+    <form action="{{ path('user_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button class="btn btn-success" type="submit">Salva</button>
+        </p>
+    </form>
+
+    <a  class="btn btn-primary" href="{{ path('user') }}">
+        <i class="icon-list icon-white"></i> Ritorna alla lista utenti
+    </a>
+    </div>
+</ul>
+{% endblock %}

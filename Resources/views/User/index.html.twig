@@ -1,0 +1,81 @@
+{% extends 'TwinpeaksUserBundle::base.html.twig' %}
+
+{% block title %}Lista utenti{% endblock %}
+
+{% block body -%}
+    <h1>Lista utenti</h1>
+
+    <form action="{{ path('user_batch_delete') }}" method="POST">
+    <table class="records_list table table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Username</th>
+                {# <th>Email</th> #}
+                <th>Abilitato</th>
+                {#<th>Lastlogin</th>#}
+                {#<th>Locked</th>#}
+                <th>Gruppo</th>
+                {#<th>Created</th>
+                <th>Updated</th>#}
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td style="vertical-align:middle"><input type="checkbox" value="{{ entity.id }}" name="batch[]" /></td>
+                <td style="vertical-align:middle">{{ entity.lastName }}</td>
+                <td style="vertical-align:middle">{{ entity.firstName }}</td>
+                <td style="vertical-align:middle"><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+                {# <td style="vertical-align:middle">{{ entity.email }}</td> #}
+                <td style="vertical-align:middle">{{ entity.enabled }}</td>
+                {#<td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                {#<td>{{ entity.locked }}</td>#}
+                <td style="vertical-align:middle">
+                    {% for group in entity.groups %}
+                    {{ group.name }}{{ loop.last ? '' : '<br />'}}
+                    {% endfor %}
+                </td>
+               {# <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td> #}
+                <td>
+                        <a href="{{ path('user_show', { 'id': entity.id }) }}" class="btn btn-info btn-small"><i class="icon-check icon-white"></i> show</a>
+                        <a href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-warning btn-small"><i class="icon-edit icon-white"></i> edit</a>
+                        {# <a href="{{ path('user_delete', { 'id': entity.id }) }}" class="btn btn-danger btn-small"><i class="icon-remove icon-white"></i> delete</a> #}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-danger" type="submit"><i class="icon-remove-sign icon-white"></i> Cancella selezionati</button>
+        <a class="btn btn-success" href="{{ path('user_new') }}">
+            <i class="icon-plus-sign icon-white"></i> Nuovo amministratore</a>
+        </a>
+        <a class="btn btn-success" href="{{ path('user_new_confirm') }}">
+            <i class="icon-plus-sign icon-white"></i> Nuovo allievo
+        </a>
+    </div>
+    </form>
+    
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    
+    <!-- <ul>
+        <li>
+            <a href="{{ path('user_new') }}">
+                Crea un nuovo utente (tipologia signup: ADMIN)
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('user_new_confirm') }}">
+                Crea un nuovo utente con conferma (tipologia signup: ADMIN-CONFIRM)
+            </a>
+        </li>
+    </ul> -->
+    {% endblock %}
