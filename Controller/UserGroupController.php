@@ -30,7 +30,7 @@ class UserGroupController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TwinpeaksUserBundle:UserGroup')->findAll();
+        $entities = $em->getRepository('TPUserBundle:UserGroup')->findAll();
 
         return array(
             'entities' => $entities,
@@ -41,7 +41,7 @@ class UserGroupController extends Controller
      *
      * @Route("/", name="usergroup_create")
      * @Method("POST")
-     * @Template("TwinpeaksUserBundle:UserGroup:new.html.twig")
+     * @Template("TPUserBundle:UserGroup:new.html.twig")
      * @Secure(roles="ROLE_SUPER_ADMIN")
      */
     public function createAction(Request $request)
@@ -94,7 +94,7 @@ class UserGroupController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TwinpeaksUserBundle:UserGroup')->find($id);
+        $entity = $em->getRepository('TPUserBundle:UserGroup')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find UserGroup entity.');
@@ -120,7 +120,7 @@ class UserGroupController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TwinpeaksUserBundle:UserGroup')->find($id);
+        $entity = $em->getRepository('TPUserBundle:UserGroup')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find UserGroup entity.');
@@ -141,14 +141,14 @@ class UserGroupController extends Controller
      *
      * @Route("/{id}", name="usergroup_update")
      * @Method("PUT")
-     * @Template("TwinpeaksUserBundle:UserGroup:edit.html.twig")
+     * @Template("TPUserBundle:UserGroup:edit.html.twig")
      * @Secure(roles="ROLE_SUPER_ADMIN")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TwinpeaksUserBundle:UserGroup')->find($id);
+        $entity = $em->getRepository('TPUserBundle:UserGroup')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find UserGroup entity.');
@@ -185,7 +185,7 @@ class UserGroupController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TwinpeaksUserBundle:UserGroup')->find($id);
+            $entity = $em->getRepository('TPUserBundle:UserGroup')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find UserGroup entity.');

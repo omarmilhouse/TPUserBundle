@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $dql   = "SELECT u FROM TwinpeaksUserBundle:User u";
+        $dql   = "SELECT u FROM TPUserBundle:User u";
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -40,7 +40,7 @@ class UserController extends Controller
             10/*limit per page*/
         );        
         
-//        $entities = $em->getRepository('TwinpeaksUserBundle:User')->findAll();
+//        $entities = $em->getRepository('TPUserBundle:User')->findAll();
 //
         return array(
             //'entities' => $entities,
@@ -52,7 +52,7 @@ class UserController extends Controller
      *
      * @Route("/", name="user_create")
      * @Method("POST")
-     * @Template("TwinpeaksUserBundle:User:new.html.twig")
+     * @Template("TPUserBundle:User:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -131,7 +131,7 @@ class UserController extends Controller
      *
      * @Route("/new_confirm", name="user_new_confirm")
      * @Method("GET")
-     * @Template("TwinpeaksUserBundle:User:new.html.twig")
+     * @Template("TPUserBundle:User:new.html.twig")
      */
     public function newConfirmAction()
     {
@@ -143,7 +143,7 @@ class UserController extends Controller
             'form'   => $form->createView(),
         );
         
-        //return $this->render('TwinpeaksUserBundle:User:new.html.twig', $data);
+        //return $this->render('TPUserBundle:User:new.html.twig', $data);
     }
 
     /**
@@ -157,7 +157,7 @@ class UserController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('TwinpeaksUserBundle:User')->find($id);
+        $entity = $em->getRepository('TPUserBundle:User')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
@@ -181,7 +181,7 @@ class UserController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('TwinpeaksUserBundle:User')->find($id);
+        $entity = $em->getRepository('TPUserBundle:User')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
@@ -202,12 +202,12 @@ class UserController extends Controller
      *
      * @Route("/{id}", name="user_update")
      * @Method("PUT")
-     * @Template("TwinpeaksUserBundle:User:edit.html.twig")
+     * @Template("TPUserBundle:User:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('TwinpeaksUserBundle:User')->find($id);
+        $entity = $em->getRepository('TPUserBundle:User')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
@@ -244,7 +244,7 @@ class UserController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TwinpeaksUserBundle:User')->find($id);
+            $entity = $em->getRepository('TPUserBundle:User')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find User entity.');
@@ -266,7 +266,7 @@ class UserController extends Controller
     public function batchDeleteAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('TwinpeaksUserBundle:User');
+        $repo = $em->getRepository('TPUserBundle:User');
         $values = $request->get('batch');
         
         foreach ($values as $id) {
@@ -287,7 +287,7 @@ class UserController extends Controller
 //
 //        if ($form->isValid()) {
 //            $em = $this->getDoctrine()->getManager();
-//            $entity = $em->getRepository('TwinpeaksUserBundle:User')->find($id);
+//            $entity = $em->getRepository('TPUserBundle:User')->find($id);
 //
 //            if (!$entity) {
 //                throw $this->createNotFoundException('Unable to find User entity.');
@@ -324,7 +324,7 @@ class UserController extends Controller
     private function generateRandomPassword($length = 8)
     {
         $user_id = $this->getUser()->getId();
-        $user = $this->getDoctrine()->getRepository('TwinpeaksUserBundle:User')->find($user_id);
+        $user = $this->getDoctrine()->getRepository('TPUserBundle:User')->find($user_id);
         //$value = uniqid($user->getEmail());
         $value = uniqid($this->getUser()->getEmail());
         return substr(sha1($value), 0, $length - 1);
