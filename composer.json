@@ -20,9 +20,7 @@
     },
     "require-dev": {
         "symfony/framework-bundle": "2.3.*",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
-        "gedmo/doctrine-extensions": "dev-master",
-        "jms/security-extra-bundle": "dev-master"        
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "autoload": {
         "psr-0": { "Twinpeaks\\UserBundle": "" }

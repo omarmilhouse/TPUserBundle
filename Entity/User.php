@@ -4,12 +4,12 @@ namespace Twinpeaks\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="tp_user")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser {
     /**
@@ -32,14 +32,12 @@ class User extends BaseUser {
     protected $lastName;
     
     /**
-     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created", type="datetime")
      */
     protected $created;
 
     /**
      * @ORM\Column(name="updated", type="datetime")
-     * @Gedmo\Timestampable(on="update")
      */
     protected $updated;
     
@@ -50,7 +48,7 @@ class User extends BaseUser {
     
     /**
      * @ORM\ManyToMany(targetEntity="UserGroup")
-     * @ORM\JoinTable(name="myusers_groups",
+     * @ORM\JoinTable(name="tpusers_groups",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
      * )
@@ -76,6 +74,22 @@ class User extends BaseUser {
         $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->registered = false;
     }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->created = new \DateTime();
+    }    
+    
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedValue()
+    {
+        $this->updated = new \DateTime();
+    }    
     
     /**
      * Get id
