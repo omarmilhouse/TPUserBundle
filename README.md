@@ -3,8 +3,7 @@ TPUserBundle
 
 FOSUserBundle extension with admin gui
 
-Installation
-============
+##Installation
 
 Add TPUserBundle in your composer.json:
 
