@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "FOSUserBundle extension with admin for use with Symfony2",
     "keywords": ["fos_user", "bundle", "user_admin"],
-    "homepage": "",
+    "homepage": "https://github.com/omarmilhouse/TPUserBundle",
     "license": "MIT",
     "authors": [
         {
