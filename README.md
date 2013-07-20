@@ -68,3 +68,15 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
 ```        
+
+Configure the FOSUserBundle
+
+``` yaml
+# FOSUser Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Twinpeaks\UserBundle\Entity\User
+    group:
+        group_class: Twinpeaks\UserBundle\Entity\UserGroup
+```     
