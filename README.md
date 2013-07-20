@@ -84,8 +84,15 @@ fos_user:
         group_class: Twinpeaks\UserBundle\Entity\UserGroup
 ```     
 
+Add TPUserBundle to assetic
+``` yaml
+# app/config/config.yml
+    bundles:        [ "TPUserBundle" ]
+```     
+
 Import routing files
 ``` yaml
+# app/config/routing.yml
 twinpeaks_user:
     resource: "@TPUserBundle/Controller/"
     type:     annotation
