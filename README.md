@@ -26,6 +26,7 @@ public function registerBundles()
     $bundles = array(
         // ...
         new FOS\UserBundle\FOSUserBundle(),
+        new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         new Twinpeaks\UserBundle\TPUserBundle(),
     );
 }
