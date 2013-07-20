@@ -83,3 +83,23 @@ fos_user:
     group:
         group_class: Twinpeaks\UserBundle\Entity\UserGroup
 ```     
+
+Update the schema database
+
+``` php
+#console
+php app/console doctrine:schema:update --force
+```
+
+Create user
+``` php
+#console
+php app/console fos:user:create
+```
+
+Promote user to SuperAdmin
+Create user
+``` php
+#console
+php app/console fos:user:promote username ROLE_SUPER_ADMIN
+```
