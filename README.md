@@ -34,6 +34,7 @@ public function registerBundles()
 Configure your application's security.yml
 
 ``` yaml
+# app/config/security.yml
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
@@ -72,6 +73,8 @@ security:
 Configure the FOSUserBundle
 
 ``` yaml
+# app/config/config.yml
+
 # FOSUser Configuration
 fos_user:
     db_driver: orm
