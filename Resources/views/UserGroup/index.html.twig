@@ -15,16 +15,16 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('usergroup_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td><a href="{{ path('tp_usergroup_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 {#<td>{{ entity.roles }}</td>#}
                 <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('usergroup_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('tp_usergroup_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('usergroup_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('tp_usergroup_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -35,7 +35,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('usergroup_new') }}">
+            <a href="{{ path('tp_usergroup_new') }}">
                 Create a new entry
             </a>
         </li>

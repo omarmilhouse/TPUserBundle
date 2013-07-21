@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>UserGroup creation</h1>
 
-    <form action="{{ path('usergroup_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('tp_usergroup_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
             <button type="submit">Create</button>
@@ -12,7 +12,7 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('usergroup') }}">
+        <a href="{{ path('tp_usergroup') }}">
             Back to the list
         </a>
     </li>

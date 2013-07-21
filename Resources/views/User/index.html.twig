@@ -5,7 +5,7 @@
 {% block body -%}
     <h1>Lista utenti</h1>
 
-    <form action="{{ path('user_batch_delete') }}" method="POST">
+    <form action="{{ path('tp_user_batch_delete') }}" method="POST">
     <table class="records_list table table table-striped">
         <thead>
             <tr>
@@ -29,7 +29,7 @@
                 <td style="vertical-align:middle"><input type="checkbox" value="{{ entity.id }}" name="batch[]" /></td>
                 <td style="vertical-align:middle">{{ entity.lastName }}</td>
                 <td style="vertical-align:middle">{{ entity.firstName }}</td>
-                <td style="vertical-align:middle"><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+                <td style="vertical-align:middle"><a href="{{ path('tp_user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
                 {# <td style="vertical-align:middle">{{ entity.email }}</td> #}
                 <td style="vertical-align:middle">{{ entity.enabled }}</td>
                 {#<td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>#}
@@ -42,9 +42,9 @@
                {# <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td> #}
                 <td>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}" class="btn btn-info btn-small"><i class="icon-check icon-white"></i> show</a>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-warning btn-small"><i class="icon-edit icon-white"></i> edit</a>
-                        {# <a href="{{ path('user_delete', { 'id': entity.id }) }}" class="btn btn-danger btn-small"><i class="icon-remove icon-white"></i> delete</a> #}
+                        <a href="{{ path('tp_user_show', { 'id': entity.id }) }}" class="btn btn-info btn-small"><i class="icon-check icon-white"></i> show</a>
+                        <a href="{{ path('tp_user_edit', { 'id': entity.id }) }}" class="btn btn-warning btn-small"><i class="icon-edit icon-white"></i> edit</a>
+                        {# <a href="{{ path('tp_user_delete', { 'id': entity.id }) }}" class="btn btn-danger btn-small"><i class="icon-remove icon-white"></i> delete</a> #}
                 </td>
             </tr>
         {% endfor %}
@@ -52,10 +52,10 @@
     </table>
     <div>
         <button class="btn btn-danger" type="submit"><i class="icon-remove-sign icon-white"></i> Cancella selezionati</button>
-        <a class="btn btn-success" href="{{ path('user_new') }}">
+        <a class="btn btn-success" href="{{ path('tp_user_new') }}">
             <i class="icon-plus-sign icon-white"></i> Nuovo utente</a>
         </a>
-        <a class="btn btn-success" href="{{ path('user_new_confirm') }}">
+        <a class="btn btn-success" href="{{ path('tp_user_new_confirm') }}">
             <i class="icon-plus-sign icon-white"></i> Nuovo utente con conferma
         </a>
     </div>
@@ -68,12 +68,12 @@
     
     <!-- <ul>
         <li>
-            <a href="{{ path('user_new') }}">
+            <a href="{{ path('tp_user_new') }}">
                 Crea un nuovo utente (tipologia signup: ADMIN)
             </a>
         </li>
         <li>
-            <a href="{{ path('user_new_confirm') }}">
+            <a href="{{ path('tp_user_new_confirm') }}">
                 Crea un nuovo utente con conferma (tipologia signup: ADMIN-CONFIRM)
             </a>
         </li>
