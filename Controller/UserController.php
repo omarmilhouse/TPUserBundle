@@ -11,10 +11,9 @@ use Twinpeaks\UserBundle\Entity\User;
 use Twinpeaks\UserBundle\Form\UserType;
 use FOS\UserBundle\Model\UserManager;
 use FOS\UserBundle\Controller\ResettingController;
+
 /**
  * User controller.
- *
- * @Route("/admin/user")
  */
 class UserController extends Controller
 {
@@ -22,8 +21,6 @@ class UserController extends Controller
     /**
      * Lists all User entities.
      *
-     * @Route("/", name="user")
-     * @Method("GET")
      * @Template()
      */
     public function indexAction()
@@ -50,8 +47,6 @@ class UserController extends Controller
     /**
      * Creates a new User entity.
      *
-     * @Route("/", name="user_create")
-     * @Method("POST")
      * @Template("TPUserBundle:User:new.html.twig")
      */
     public function createAction(Request $request)
@@ -99,7 +94,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             
-            return $this->redirect($this->generateUrl('user_show', array('id' => $user->getId())));
+            return $this->redirect($this->generateUrl('tp_user_show', array('id' => $user->getId())));
         }
 
         return array(
@@ -111,8 +106,6 @@ class UserController extends Controller
     /**
      * Displays a form to create a new User entity.
      *
-     * @Route("/new", name="user_new")
-     * @Method("GET")
      * @Template()
      */
     public function newAction()
@@ -129,8 +122,6 @@ class UserController extends Controller
     /**
      * Displays a form to create a new User entity with confirm.
      *
-     * @Route("/new_confirm", name="user_new_confirm")
-     * @Method("GET")
      * @Template("TPUserBundle:User:new.html.twig")
      */
     public function newConfirmAction()
@@ -149,8 +140,6 @@ class UserController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @Route("/{id}", name="user_show")
-     * @Method("GET")
      * @Template()
      */
     public function showAction($id)
@@ -174,8 +163,6 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
-     * @Method("GET")
      * @Template()
      */
     public function editAction($id)
@@ -200,8 +187,6 @@ class UserController extends Controller
     /**
      * Edits an existing User entity.
      *
-     * @Route("/{id}", name="user_update")
-     * @Method("PUT")
      * @Template("TPUserBundle:User:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
@@ -222,7 +207,7 @@ class UserController extends Controller
             //$em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tp_user_edit', array('id' => $id)));
         }
 
         return array(
@@ -233,9 +218,6 @@ class UserController extends Controller
     }
     /**
      * Deletes a User entity.
-     *
-     * @Route("/{id}", name="user_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -254,14 +236,12 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('user'));
+        return $this->redirect($this->generateUrl('tp_user'));
     }
     
     /**
      * Batch deletes User entities.
      *
-     * @Route("/batch/delete", name="user_batch_delete")
-     * @Method("POST")
      */
     public function batchDeleteAction(Request $request)
     {
@@ -281,7 +261,7 @@ class UserController extends Controller
         
         $em->flush();
 
-        return $this->redirect($this->generateUrl('user'));
+        return $this->redirect($this->generateUrl('tp_user'));
 //        $form = $this->createDeleteForm($id);
 //        $form->bind($request);
 //

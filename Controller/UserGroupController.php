@@ -22,8 +22,6 @@ class UserGroupController extends Controller
     /**
      * Lists all UserGroup entities.
      *
-     * @Route("/", name="usergroup")
-     * @Method("GET")
      * @Template()
      */
     public function indexAction()
@@ -55,7 +53,7 @@ class UserGroupController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usergroup_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tp_usergroup_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -162,7 +160,7 @@ class UserGroupController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usergroup_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tp_usergroup_edit', array('id' => $id)));
         }
 
         return array(
@@ -195,7 +193,7 @@ class UserGroupController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('usergroup'));
+        return $this->redirect($this->generateUrl('tp_usergroup'));
     }
 
     /**
