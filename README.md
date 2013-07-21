@@ -95,9 +95,8 @@ Import routing files
 ``` yaml
 # app/config/routing.yml
 twinpeaks_user:
-    resource: "@TPUserBundle/Controller/"
-    type:     annotation
-    prefix:   /  
+    resource: "@TPUserBundle/Resources/config/routing.xml"
+    prefix:   /admin    
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
