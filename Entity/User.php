@@ -65,6 +65,10 @@ class User extends BaseUser {
      */
     protected $coverPicture;
     
+    
+    public function getFullName() {
+        return $this->lastName . ' '.$this->firstName;
+    }
     /**
      * Constructor
      */
